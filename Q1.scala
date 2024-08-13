@@ -3,7 +3,7 @@ object Q1 {
     plaintext.map { char =>
       if (char.isLetter) {
         val base = if (char.isUpper) 'A' else 'a'
-        val shifted = (char - base + shift) % 26 // Calculates the new position of the character after applying the shift
+        val shifted = (char - base + shift+26) % 26 // Calculates the new position of the character after applying the shift
         (base + shifted).toChar
       } else {
         char
