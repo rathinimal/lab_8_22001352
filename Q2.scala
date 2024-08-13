@@ -1,36 +1,37 @@
-import scala.io.StdIn
+object lab08_q02{
 
-object Q2 {
-  def main(args: Array[String]): Unit = {
-    val input = {
-      if (args.length == 1) {
-        args(0)
-      } else {
-        println("Please enter an integer:")
-        StdIn.readLine()
-      }
+    def main(args: Array[String]): Unit = {
+
+        val multifyOf3: Int => Boolean = (x: Int) => x % 3 == 0
+
+        val multifyOf5: Int => Boolean = (x: Int) => x % 5 == 0
+
+
+
+        print("Enter a Number: ")
+
+        val number = scala.io.StdIn.readInt()
+
+
+
+        val result = (multifyOf3(number) , multifyOf5(number)) match{
+
+            case (true , true) => "Multiple of Both Three and Five"
+
+            case (true , false) => "Multiple of Three"
+
+            case (false , true) => "Multiple of Five"
+
+            case (false , false) => "Not a Multiple of Three of Five"
+
+        }
+
+
+
+        println(result)
+
+        
+
     }
 
-    // Convert the input to an integer using try-catch to handle invalid inputs
-    try {
-      val number = input.trim.toInt
-      // Lambda functions for checking multiples
-      val isMultipleOfThree: Int => Boolean = _ % 3 == 0
-      val isMultipleOfFive: Int => Boolean = _ % 5 == 0
-
-      // Pattern matching to categorize the number
-      val message = (number: Int) match {
-        case _ if isMultipleOfThree(number) && isMultipleOfFive(number) => "Multiple of Both Three and Five"
-        case _ if isMultipleOfThree(number) => "Multiple of Three"
-        case _ if isMultipleOfFive(number) => "Multiple of Five"
-        case _ => "Not a Multiple of Three or Five"
-      }
-
-      println(message)
-
-    } catch {
-      case e: NumberFormatException =>
-        println("Invalid input. Please provide a valid integer.")
-    }
-  }
 }
