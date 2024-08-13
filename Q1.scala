@@ -19,7 +19,6 @@ object Q1 {
     mode.toLowerCase match {
       case "encrypt" => encrypt(text, shift)
       case "decrypt" => decrypt(text, shift)
-      case _ => throw new IllegalArgumentException("Mode must be either 'encrypt' or 'decrypt'")
     }
   }
 
@@ -35,12 +34,6 @@ object Q1 {
     val decryptedText = process(encryptedText, shift, "decrypt")
     println(s"Decrypted: $decryptedText")
 
-    // Invalid mode handling
-    try {
-      val invalidText = process(encryptedText, shift, "Decry")
-      println(s"Decrypted: $invalidText")
-    } catch {
-      case e: IllegalArgumentException => println(e.getMessage)
-    }
+    
   }
 }
